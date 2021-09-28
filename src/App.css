@@ -87,7 +87,8 @@ img.avatar {
   font-size: 15px;
   font-weight: bold;
   color: #8a0000;
-  opacity: 0;
+  opacity: 1;
+  display: inline-block;
 }
 #error-msg-second-line {
   display: block;

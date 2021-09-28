@@ -18,7 +18,6 @@ function HomePage(props) {
         event.preventDefault();
         props.upPass(pass)
         props.upUser(user)
-        console.log("COMINGDOWNHERE")
         updateUser("")
         updatePass("")
 
@@ -36,7 +35,10 @@ function HomePage(props) {
                     <input type="password" placeholder="Enter Password" name="pass" required onChange={onPassChange}/>
 
                     <button type="submit" onClick={submitHandler} value="Login">Login</button>
-                    <p id="login-error-msg">!! Invalid username and/or password</p>
+                    {
+                        props.status === 1 && <p id="login-error-msg">!! Invalid username and/or password</p>
+
+                    }
                 </div>
 
             </form>

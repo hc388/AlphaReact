@@ -18,23 +18,16 @@ function App() {
 
     let userUpdater = newUser => {
         updateUser(newUser)
-        console.log("USERNAME IN APP IS", userName)
     }
 
     let passUpdater = newPass => {
         updatePass(newPass)
-        console.log("PASSWORD IN APP IS", passWord)
 
     }
     let roleUpdater = newRole => {
         updateRole(newRole)
-        console.log("YOU ARE A ", role)
     }
-    let handleClick = () => {
-        updateClick(1)
-
-    }
-
+    //let invalidMsg = <p id=\"login-error-msg\">!! Invalid username and/or password</p>
     return (
         <Router>
             <div>
@@ -45,7 +38,8 @@ function App() {
                         </button>
                         </Link>
                     <Route exact path="/">
-                        <HomePage upUser={userUpdater} upPass={passUpdater}/>
+                        {role === "notfound" ? <HomePage upUser={userUpdater} upPass={passUpdater} status = {1}/> :
+                            <HomePage upUser={userUpdater} upPass={passUpdater} status ={0}/> }
                         <ApiCall user={userName} pass={passWord} updater={roleUpdater}/>
                     </Route>
                     <Route  path="/user">
@@ -59,6 +53,8 @@ function App() {
                 </Switch>
                 {role === "user" && <Redirect to="/user" />}
                 {role === "admin" && <Redirect to="/admin"/>}
+
+
 
 
             </div>
